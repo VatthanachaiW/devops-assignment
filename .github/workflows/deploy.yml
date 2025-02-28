@@ -42,7 +42,10 @@ jobs:
       
       - name: Get GKE Credentials
         run: gcloud container clusters get-credentials "$CLUSTER_NAME" --region "$REGION" --project "$PROJECT_ID"
-      
+
+      - name: List Files and Directories
+        run: find "$(pwd)" -type d
+        
       - name: Update Deployment
         run: |
           cd ../../k8s/overlays/production
