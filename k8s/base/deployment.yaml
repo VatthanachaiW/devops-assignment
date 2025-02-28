@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-api
+  name: go-app
 spec:
   selector:
     matchLabels:
-      app: hello-api
+      app: go-app
   template:
     metadata:
       labels:
-        app: hello-api
+        app: go-app
     spec:
       containers:
-      - name: hello-api
+      - name: go-app
         image: docker.io/vatthanachaiw/go-app:latest
         resources:
           limits:
@@ -25,4 +25,4 @@ spec:
         - containerPort: 8080
         envFrom:
         - configMapRef:
-            name: hello-api-config
+            name: go-app-config

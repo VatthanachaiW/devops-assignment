@@ -49,7 +49,7 @@ jobs:
       - name: Update Deployment
         run: |
           cd $GITHUB_WORKSPACE/k8s/overlays/prod
-          kustomize edit set image go-app=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+          kustomize edit set image docker.io/vatthanachaiw/go-app=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
 
       - name: Deploy to GKE
         run: |
