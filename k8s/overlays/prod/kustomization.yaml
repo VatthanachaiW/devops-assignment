@@ -5,7 +5,7 @@ resources:
 
 images:
   - name: go-app
-    newName: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app
+    newName: docker.io/vatthanachaiw/go-app
     newTag: ${GITHUB_SHA}
     
 patches:
