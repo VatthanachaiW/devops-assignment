@@ -48,10 +48,10 @@ jobs:
         
       - name: Update Deployment
         run: |
-          cd ../../k8s/overlays/prod
-           kustomize edit set image hello-api=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+          cd $GITHUB_WORKSPACE/k8s/overlays/prod
+          kustomize edit set image hello-api=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
 
       - name: Deploy to GKE
         run: |
-          kubectl apply -k k8s/overlays/prod 
+          kubectl apply -k $GITHUB_WORKSPACE/k8s/overlays/prod 
           kubectl rollout status deployment/go-app
