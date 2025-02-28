@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: hello-api
-        image: vatthanachaiw/goapp:1.21.4
+        image: docker.io/vatthanachaiw/go-app:latest
         resources:
           limits:
             memory: "256Mi"

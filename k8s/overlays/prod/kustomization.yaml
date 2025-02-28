@@ -4,7 +4,7 @@ resources:
   - ../../base
 
 images:
-  - name: hello-api
+  - name: go-app
     newName: docker.io/vatthanachaiw/go-app
     newTag: latest
     
