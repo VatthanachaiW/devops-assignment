@@ -45,7 +45,7 @@ jobs:
       
       - name: Update Deployment
         run: |
-          cd k8s/overlays/production
+          cd ../../k8s/overlays/production
            kustomize edit set image hello-api=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
 
       - name: Deploy to GKE
