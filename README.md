@@ -32,10 +32,22 @@ Docker image Uri: https://hub.docker.com/r/vatthanachaiw/goapp
 
 **Expected Output:** IaC code
 
+**Result**
+![Terraform](images/2025-02-28_20-14-25.png)
+![GKE](images/2025-02-28_20-12-17.png)
+
 * Condition: Avoid injecting the generated GCP access keys to the application directly. **Expected Output:** Kustomize manifest, IaC code or anything to complete this task.
 
 6. Use ArgoCD to deploy this application. To follow GitOps practices, we prefer to have an ArgoCD application defined declaratively in a YAML file if possible.
 
 **Expected output:** Yaml files and instruction how to deploy the application or command line
 
+**Result**
+!Not complete
+![Argo CD](images/2025-02-28_20-16-39.png)
+
 7. Create CICD workflow using GitOps pipeline to build and deploy application **Expected output:** GitOps pipeline (Github, Gitlab, Bitbucket, Jenkins) workflow or diagram
+
+**Result**
+!Not Complete Authorization failed
+![Pipeline Auth failed](images/2025-02-28_20-09-31.png)
