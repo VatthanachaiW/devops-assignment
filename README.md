@@ -43,7 +43,7 @@ Docker image Uri: https://hub.docker.com/r/vatthanachaiw/goapp
 **Expected output:** Yaml files and instruction how to deploy the application or command line
 
 **Result**
-!Not complete
+It!Not complete because I nhave ever use the ArgoCD before.
 ![Argo CD](images/2025-02-28_20-16-39.png)
 
 7. Create CICD workflow using GitOps pipeline to build and deploy application **Expected output:** GitOps pipeline (Github, Gitlab, Bitbucket, Jenkins) workflow or diagram
