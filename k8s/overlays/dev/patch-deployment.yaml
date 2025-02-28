@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-api
+  name: go-app
 spec:
   replicas: 1
   template:
     spec:
       containers:
-      - name: hello-api
+      - name: go-app
         resources:
           limits:
             memory: "512Mi"
