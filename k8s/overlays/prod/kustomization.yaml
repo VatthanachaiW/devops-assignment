@@ -1,0 +1,15 @@
+namespace: hello-api-dev
+
+resources:
+  - ../../base
+
+patches:
+  - path: patch-deployment.yaml
+  - path: patch-configmap.yaml
+#  - patch: patch-secret.yaml
+
+secretGenerator:
+  - name: hello-api-secret
+    behavior: replace
+    literals:
+      - API_KEY=prod-Pssw0rd!

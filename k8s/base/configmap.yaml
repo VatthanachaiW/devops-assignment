@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-api-config
+data:
+  APP_PORT: "8080"
+  ENV: "development"
