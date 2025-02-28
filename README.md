@@ -53,4 +53,5 @@ It!Not complete because I have ever used the ArgoCD before.
 ![Pipeline Auth failed](images/2025-03-01_02-12-30.png)
 
 ## Final Result from Deploy
+Uri: http://34.87.183.208/?name=Vatthanachai
 ![Final result](images/2025-03-01_02-15-18.png)
