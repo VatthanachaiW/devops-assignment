@@ -36,9 +36,14 @@ jobs:
       
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }} .
+
+      - name: Tag Docker latest
+        run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }} ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:latest
       
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+        run: |
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:latest
       
       - name: Get GKE Credentials
         run: gcloud container clusters get-credentials "$CLUSTER_NAME" --region "$REGION" --project "$PROJECT_ID"
@@ -46,10 +51,10 @@ jobs:
 #      - name: List Files and Directories
 #        run: find "$(pwd)" -type d
         
-      - name: Update Deployment
-        run: |
-          cd $GITHUB_WORKSPACE/k8s/overlays/prod
-          kustomize edit set image go-app=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+#      - name: Update Deployment
+#        run: |
+#          cd $GITHUB_WORKSPACE/k8s/overlays/prod
+#          kustomize edit set image go-app=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
       
       - name: Display Kustomization YAML
         run: |
