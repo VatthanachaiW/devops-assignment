@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: hello-api
-        image: hello-api
+        image: go-app
         resources:
           limits:
             memory: "256Mi"
