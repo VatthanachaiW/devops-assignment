@@ -43,17 +43,17 @@ jobs:
       - name: Get GKE Credentials
         run: gcloud container clusters get-credentials "$CLUSTER_NAME" --region "$REGION" --project "$PROJECT_ID"
 
-      - name: List Files and Directories
-        run: find "$(pwd)" -type d
+#      - name: List Files and Directories
+#        run: find "$(pwd)" -type d
         
       - name: Update Deployment
         run: |
           cd $GITHUB_WORKSPACE/k8s/overlays/prod
           kustomize edit set image docker.io/vatthanachaiw/go-app=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
       
-      - name: Display Kustomization YAML
-        run: |
-          cat $GITHUB_WORKSPACE/k8s/overlays/prod/kustomization.yaml
+#      - name: Display Kustomization YAML
+#        run: |
+#          cat $GITHUB_WORKSPACE/k8s/overlays/prod/kustomization.yaml
       
       - name: Deploy to GKE
         run: |
