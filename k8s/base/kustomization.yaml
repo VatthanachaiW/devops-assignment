@@ -1,4 +1,4 @@
-namespace: hello-api
+namespace: go-app
 
 resources:
   - namespace.yaml

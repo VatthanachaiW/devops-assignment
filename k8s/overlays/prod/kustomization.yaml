@@ -4,7 +4,7 @@ resources:
   - ../../base
 
 images:
-  - name: go-app
+  - name: docker.io/vatthanachaiw/go-app
     newName: docker.io/vatthanachaiw/go-app
     newTag: latest
     
