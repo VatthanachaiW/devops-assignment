@@ -9,6 +9,7 @@ The sample application is developed using Go. Our development team would like to
 **Expected Output:** Dockerfile
 
 **Result**
+
 ![Dockerfile](images/2025-02-28_12-48-10.png)
 
 2. Build the image using the Dockerfile and push to Docker Hub
@@ -16,6 +17,7 @@ The sample application is developed using Go. Our development team would like to
 **Expected Output:** Build and push command and Docker Hub url
 
 **Result**
+
 Docker command for build, tag and push
 Docker image Uri: https://hub.docker.com/r/vatthanachaiw/goapp
 ![Docker command](images/2025-02-28_12-46-18.png)
@@ -33,6 +35,7 @@ Docker image Uri: https://hub.docker.com/r/vatthanachaiw/goapp
 **Expected Output:** IaC code
 
 **Result**
+
 ![Terraform](images/2025-02-28_20-14-25.png)
 ![GKE](images/2025-02-28_20-12-17.png)
 
@@ -54,4 +57,5 @@ It!Not complete because I have ever used the ArgoCD before.
 
 ## Final Result from Deploy
 Uri: http://34.87.183.208/?name=Vatthanachai
+
 ![Final result](images/2025-03-01_02-15-18.png)
