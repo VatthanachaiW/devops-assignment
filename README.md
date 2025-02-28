@@ -8,9 +8,16 @@ The sample application is developed using Go. Our development team would like to
 
 **Expected Output:** Dockerfile
 
+**Result**
+![Dockerfile](images/2025-02-28_12-48-10.png)
+
 2. Build the image using the Dockerfile and push to Docker Hub
 
 **Expected Output:** Build and push command and Docker Hub url
+
+**Result**
+Docker command for build, tag and push
+![Docker command](images/2025-02-28_12-46-18.png)
 
 3. Create a Kustomize manifest to deploy the image from the previous step. The Kustomize should have flexibility to allow Developer to adjust values without having to rebuild the Kustomize frequently
 
