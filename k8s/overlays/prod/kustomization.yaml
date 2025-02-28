@@ -6,7 +6,7 @@ resources:
 images:
   - name: go-app
     newName: docker.io/vatthanachaiw/go-app
-    newTag: ${GITHUB_SHA}
+    newTag: "gcr.io/$GITHUB_SHA"
     
 patches:
   - path: patch-deployment.yaml
