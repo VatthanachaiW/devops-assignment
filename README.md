@@ -8,13 +8,25 @@ The sample application is developed using Go. Our development team would like to
 
 **Expected Output:** Dockerfile
 
+**Result**
+![Dockerfile](images/2025-02-28_12-48-10.png)
+
 2. Build the image using the Dockerfile and push to Docker Hub
 
 **Expected Output:** Build and push command and Docker Hub url
 
+**Result**
+Docker command for build, tag and push
+Docker image Uri: https://hub.docker.com/r/vatthanachaiw/goapp
+![Docker command](images/2025-02-28_12-46-18.png)
+![API Result](images/2025-02-28_13-19-53.png)
 3. Create a Kustomize manifest to deploy the image from the previous step. The Kustomize should have flexibility to allow Developer to adjust values without having to rebuild the Kustomize frequently
 
 **Expected Output:** Kustomize manifest file to deploy the application
+
+**Result**
+
+![Kustomize manifest](images/2025-02-28_14-34-05.png)
 
 4. Setup GKE cluster with the related resources to run GKE like VPC, Subnets, etc. by following GKE Best Practices using any IaC tools (Terraform, OpenTufo, Pulumi) (Bonus point: use Terraform/Terragrunt)
 
