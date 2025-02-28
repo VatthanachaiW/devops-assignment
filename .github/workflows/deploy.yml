@@ -11,36 +11,49 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
+
+      # Step 2: Set up Docker Buildx for multi-platform builds (optional, but good practice)
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      
+
+      # Step 3: Login to DockerHub using secrets for username and password
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
+      # Step 4: Build Docker image tagged with GitHub commit SHA
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }} .
-      
+
+      # Step 5: Push Docker image to DockerHub
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
-    
+
   deploy:
-    needs: build
+    needs: build  # Ensure the build job completes before deploying
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Set up Google Cloud SDK with service account credentials
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}  # Use the service account key stored in GitHub Secrets
+
+      # Step 2: Set the Google Cloud project using the provided project ID
       - name: Set GCP Project
-        run: gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+        run: gcloud config set project ${{ secrets.GCP_PROJECT_ID }}  # Set your project ID here
+
+      # Step 3: Authenticate to GKE cluster using the correct credentials
       - name: Authenticate with GKE
-        run: gcloud container clusters get-credentials hello-gke-cluster-development --region=asia-southeast1 --project ${{ secrets.GCP_PROJECT_ID }}
+        run: gcloud container clusters get-credentials hello-gke-cluster-development --region=asia-southeast1
+
+      # Step 4: Update image in Kustomize overlay with the newly built Docker image tag
       - name: Update Kustomize Image
         run: |
           cd k8s/overlays/production
           kustomize edit set image ${{ secrets.DOCKER_HUB_USERNAME }}/go-app=${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+
+      # Step 5: Deploy to GKE using kubectl and Kustomize
       - name: Deploy to GKE
         run: |
-          kubectl apply -k k8s/overlays/production
-          kubectl rollout status deployment/go-app
+          kubectl apply -k k8s/overlays/production  # Apply the Kustomize configuration
+          kubectl rollout status deployment/go-app  # Wait for the deployment to finish
