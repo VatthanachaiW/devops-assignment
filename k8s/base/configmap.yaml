@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: hello-api-config
+  name: go-app-config
 data:
   APP_PORT: "8080"
   ENV: "development"
