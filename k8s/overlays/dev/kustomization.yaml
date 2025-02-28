@@ -1,4 +1,4 @@
-namespace: goo-app-dev
+namespace: go-app-dev
 
 resources:
   - ../../base
