@@ -1,0 +1,45 @@
+name: Deploy to GKE
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }} .
+      
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+    
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+      - name: Authenticate with GKE
+        run: gcloud container clusters get-credentials hello-gke-cluster-development --region=asia-southeast1 --project ${{ secrets.GCP_PROJECT_ID }}
+      - name: Update Kustomize Image
+        run: |
+          cd k8s/overlays/production
+          kustomize edit set image ${{ secrets.DOCKER_HUB_USERNAME }}/go-app=${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+      - name: Deploy to GKE
+        run: |
+          kubectl apply -k k8s/overlays/production
+          kubectl rollout status deployment/go-app
