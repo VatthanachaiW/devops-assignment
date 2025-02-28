@@ -17,6 +17,7 @@ The sample application is developed using Go. Our development team would like to
 
 **Result**
 Docker command for build, tag and push
+Docker image Uri: https://hub.docker.com/r/vatthanachaiw/goapp
 ![Docker command](images/2025-02-28_12-46-18.png)
 
 3. Create a Kustomize manifest to deploy the image from the previous step. The Kustomize should have flexibility to allow Developer to adjust values without having to rebuild the Kustomize frequently
