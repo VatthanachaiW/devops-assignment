@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: go-app
-        image: docker.io/vatthanachaiw/go-app
+        image: docker.io/vatthanachaiw/go-app:latest
         resources:
           limits:
             memory: "256Mi"

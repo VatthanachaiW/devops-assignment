@@ -3,11 +3,6 @@ namespace: go-app-prod
 resources:
   - ../../base
 
-images:
-  - name: go-app
-    newName: docker.io/vatthanachaiw/go-app
-    newTag: "gcr.io/$GITHUB_SHA"
-    
 patches:
   - path: patch-deployment.yaml
   - path: patch-configmap.yaml
