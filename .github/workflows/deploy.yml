@@ -63,4 +63,4 @@ jobs:
       - name: Deploy to GKE
         run: |
           kubectl apply -k $GITHUB_WORKSPACE/k8s/overlays/prod 
-          kubectl rollout status deployment/go-app
+          kubectl rollout status deployment/go-app -n go-app-prod
