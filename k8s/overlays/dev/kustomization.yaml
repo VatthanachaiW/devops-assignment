@@ -1,13 +1,13 @@
-namespace: hello-api-dev
+namespace: goo-app-dev
 
 resources:
   - ../../base
 
 images:
-  - name: docker.io/vatthanachaiw/go-app
-    newName: docker.io/vatthanachaiw/go-app
-    newTag: latest
-
+  - name: go-app
+    newName: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app
+    newTag: ${GITHUB_SHA}
+    
 patches:
   - path: patch-deployment.yaml
   - path: patch-configmap.yaml

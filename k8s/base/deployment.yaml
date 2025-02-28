@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: go-app
-        image: docker.io/vatthanachaiw/go-app:latest
+        image: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
         resources:
           limits:
             memory: "256Mi"
