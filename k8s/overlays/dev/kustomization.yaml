@@ -3,6 +3,11 @@ namespace: hello-api-dev
 resources:
   - ../../base
 
+images:
+  - name: hello-api
+    newName: docker.io/vatthanachaiw/go-app
+    newTag: latest
+
 patches:
   - path: patch-deployment.yaml
   - path: patch-configmap.yaml
