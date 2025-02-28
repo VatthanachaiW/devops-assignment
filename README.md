@@ -51,3 +51,6 @@ Docker image Uri: https://hub.docker.com/r/vatthanachaiw/goapp
 **Result**
 !Not Complete Authorization failed
 ![Pipeline Auth failed](images/2025-03-01_02-12-30.png)
+
+## Final Result from Deploy
+![Final result](images/2025-03-01_02-15-18.png)
