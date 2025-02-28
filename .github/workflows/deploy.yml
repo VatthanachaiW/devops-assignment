@@ -51,10 +51,10 @@ jobs:
 #      - name: List Files and Directories
 #        run: find "$(pwd)" -type d
         
-#      - name: Update Deployment
-#        run: |
-#          cd $GITHUB_WORKSPACE/k8s/overlays/prod
-#          kustomize edit set image go-app=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
+      - name: Update Deployment
+        run: |
+          cd $GITHUB_WORKSPACE/k8s/overlays/prod
+          kustomize edit set image go-app=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/go-app:${{ github.sha }}
       
       - name: Display Kustomization YAML
         run: |
@@ -63,4 +63,4 @@ jobs:
       - name: Deploy to GKE
         run: |
           kubectl apply -k $GITHUB_WORKSPACE/k8s/overlays/prod 
-          kubectl rollout status deployment/go-app
+          kubectl rollout status deployment/go-app -n go-app-prod --timeout=2m
