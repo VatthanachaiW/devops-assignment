@@ -46,8 +46,9 @@ Docker image Uri: https://hub.docker.com/r/vatthanachaiw/goapp
 **Expected output:** Yaml files and instruction how to deploy the application or command line
 
 **Result**
-It!Not complete because I have ever used the ArgoCD before.
+
 ![Argo CD](images/2025-02-28_20-16-39.png)
+![Argo CD](images/2025-03-08_13-47-37.png)
 
 7. Create CICD workflow using GitOps pipeline to build and deploy application **Expected output:** GitOps pipeline (Github, Gitlab, Bitbucket, Jenkins) workflow or diagram
 
@@ -56,6 +57,6 @@ It!Not complete because I have ever used the ArgoCD before.
 ![Pipeline Auth failed](images/2025-03-01_02-12-30.png)
 
 ## Final Result from Deploy
-Uri: http://34.87.183.208/?name=Vatthanachai
+Uri: http://35.198.195.172/?name=Vatthanachai
 
 ![Final result](images/2025-03-01_02-15-18.png)
